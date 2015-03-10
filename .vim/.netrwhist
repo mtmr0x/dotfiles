@@ -1,0 +1,7 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhist_cnt =5
+let g:netrw_dirhist_1='/Users/matheus/localhost/Title/SKR_MOURATO_1410/.git'
+let g:netrw_dirhist_2='/Users/matheus/localhost/_mm/snowmanlabs/.git/refs'
+let g:netrw_dirhist_3='/Users/matheus/localhost/sebrae-canvas-web/.git/logs'
+let g:netrw_dirhist_4='/Users/matheus/localhost/sebrae-canvas-web/.git/logs/refs'
+let g:netrw_dirhist_5='/Users/matheus/.vim/bundle/ctrlp.vim'
