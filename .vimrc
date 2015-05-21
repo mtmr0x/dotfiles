@@ -1,6 +1,7 @@
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => General
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+syntax on
 " Sets how many lines of history VIM has to remember
 set history=700
 
@@ -125,6 +126,9 @@ set nobackup
 set nowb
 set noswapfile
 
+" Filetypes support "
+au BufNewFile, BufRead *.ejs set filetype=html
+
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Text, tab and indent related
@@ -149,7 +153,6 @@ set si "Smart indent
 set wrap "Wrap lines
 
 
-""""""""""""""""""""""""""""""
 " => Visual mode related
 """"""""""""""""""""""""""""""
 " Visual mode pressing * or # searches for the current selection
