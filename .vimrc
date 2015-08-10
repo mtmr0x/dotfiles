@@ -1,6 +1,10 @@
+"PATHOGEM"
+execute pathogen#infect()
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => General
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+set shell=/bin/bash
 syntax on
 " Sets how many lines of history VIM has to remember
 set history=700
@@ -8,9 +12,6 @@ set history=700
 " Enable filetype plugins
 filetype plugin on
 filetype indent on
-
-"PATHOGEM"
-execute pathogen#infect()
 
 " Set to auto read when a file is changed from the outside
 set autoread
@@ -33,6 +34,13 @@ map <leader>pp :setlocal paste!<cr>
 " Toggle NERDTree
 map <C-n> :NERDTreeToggle<CR>
 
+" Ctrl+X, Ctrl+C and Ctrl+V
+" Only works after installing vim-gnome package on Ubuntu 10.04 (why?)
+vnoremap <leader>x "+d
+vnoremap <leader>c "+y
+nnoremap <leader>v "+p
+nnoremap <leader>V "+P
+
 " => Visual mode related
 """"""""""""""""""""""""""""""
 " Visual mode pressing * or # searches for the current selection
@@ -40,6 +48,10 @@ map <C-n> :NERDTreeToggle<CR>
 vnoremap <silent> * :call VisualSelection('f')<CR>
 vnoremap <silent> # :call VisualSelection('b')<CR>
 
+" Identations
+vnoremap << <gv
+vnoremap >> >gv
+vnoremap = =gv
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Moving around, tabs, windows and buffers
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -138,6 +150,14 @@ autocmd BufWrite *.bashrc :call DeleteTrailingWS()
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => VIM user interface
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+" Display extra whitespace
+set list listchars=tab:»·,trail:·,nbsp:·
+
+" Let gitgutter already torned on
+let g:gitgutter_enabled = 1
+let g:gitgutter_highlight_lines = 0
+
 " Set 7 lines to the cursor - when moving vertically using j/k
 set so=7
 
@@ -194,7 +214,7 @@ set tm=500
 
 " Highlight the current cursor line
 set cursorline
-hi CursorLine term=underline ctermbg=236 guibg=#121212
+hi CursorLine term=bold ctermbg=10 guibg=#000
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Colors and Fonts
@@ -202,15 +222,15 @@ hi CursorLine term=underline ctermbg=236 guibg=#121212
 " Enable syntax highlighting
 syntax enable
 
-colorscheme gruvbox
-set background=dark
+colorscheme monokai
 
-let g:badwolf_darkgutter = 1
+let g:badwolf_darkgutter = 0
+let g:badwolf_css_props_highlight = 1
 let g:badwolf_tabline = 0
 let g:badwolf_html_link_underline = 0
 
 " => PLUGINS STUFF FOR VIM "
-let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#enabled = 0
 let g:airline#extensions#tabline#left_sep = ' '
 let g:airline#extensions#tabline#left_alt_sep = '|'
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
@@ -352,3 +372,4 @@ function! <SID>BufcloseCloseIt()
      execute("bdelete! ".l:currentBufNum)
    endif
 endfunction
+
