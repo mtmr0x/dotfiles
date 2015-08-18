@@ -118,6 +118,28 @@ noremap <Leader>m mmHmt:%s/<C-V><cr>//ge<cr>'tzt'm
 
 " Quickly open a buffer for scripbble
 map <leader>q :e ~/buffer<cr>
+
+""""""""""
+" This allows buffers to be hidden if you've modified a buffer.
+" This is almost a must if you wish to use buffers in this way.
+set hidden
+
+" To open a new empty buffer
+" This replaces :tabnew which I used to bind to this mapping
+nmap <leader>T :enew<cr>
+
+" Move to the next buffer
+nmap <leader>l :bnext<CR>
+
+" Move to the previous buffer
+nmap <leader>h :bprevious<CR>
+
+" Close the current buffer and move to the previous one
+" This replicates the idea of closing a tab
+nmap <leader>bq :bp <BAR> bd #<CR>
+
+" Show all open buffers and their status
+nmap <leader>bl :ls<CR>
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => END MAPLEADER
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -138,6 +160,7 @@ autocmd BufWrite *.php :call DeleteTrailingWS()
 autocmd BufWrite *.html :call DeleteTrailingWS()
 autocmd BufWrite *.js :call DeleteTrailingWS()
 autocmd BufWrite *.scss :call DeleteTrailingWS()
+autocmd BufWrite *.styl :call DeleteTrailingWS()
 autocmd BufWrite *.css :call DeleteTrailingWS()
 autocmd BufWrite *.coffee :call DeleteTrailingWS()
 autocmd BufWrite *.ejs :call DeleteTrailingWS()
@@ -180,14 +203,14 @@ set hid
 set backspace=eol,start,indent
 set whichwrap+=<,>,h,l
 
-" Ignore case when searching
-set ignorecase
-
 " Set numbers
 set number
 
 " When searching try to be smart about cases
 set smartcase
+
+" Ignore case when searching
+set ignorecase
 
 " Highlight search results
 set hlsearch
@@ -214,7 +237,6 @@ set tm=500
 
 " Highlight the current cursor line
 set cursorline
-hi CursorLine term=bold ctermbg=10 guibg=#000
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Colors and Fonts
@@ -222,19 +244,26 @@ hi CursorLine term=bold ctermbg=10 guibg=#000
 " Enable syntax highlighting
 syntax enable
 
+" COLORSCHEME
 colorscheme monokai
 
-let g:badwolf_darkgutter = 0
-let g:badwolf_css_props_highlight = 1
-let g:badwolf_tabline = 0
-let g:badwolf_html_link_underline = 0
-
 " => PLUGINS STUFF FOR VIM "
-let g:airline#extensions#tabline#enabled = 0
+" AIRLINE
+let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#left_sep = ' '
 let g:airline#extensions#tabline#left_alt_sep = '|'
+" Show just the filename
+let g:airline#extensions#tabline#fnamemod = ':t'
+
+let g:airline_theme = 'simple'
+
+" CTRLP CONFIGS
 let g:ctrlp_max_height = 100
 
+" => JSHINT
+let JSHintUpdateWriteOnly = 1
+
+" => NERDTree stuff
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
 
 " Set extra options when running in GUI mode
@@ -261,7 +290,7 @@ set nowb
 set noswapfile
 
 " Filetypes support "
-au BufNewFile, BufRead *.ejs set filetype=html
+au BufNewFile, BufRead *.ejs set syntax=html
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -276,7 +305,6 @@ set smarttab
 " 1 tab == 2 spaces
 set shiftwidth=2
 set tabstop=2
-set expandtab
 
 " Linebreak on 500 characters
 set lbr
@@ -349,7 +377,7 @@ endfunction
 " Returns true if paste mode is enabled
 function! HasPaste()
     if &paste
-        return 'PASTE MODE  '
+        return 'PASTE MODE '
     en
     return ''
 endfunction
