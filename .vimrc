@@ -17,6 +17,11 @@ filetype indent on
 set autoread
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" FUZZY FINDER
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+set rtp+=~/.fzf
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " MAPLEADER
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " With a map leader it's possible to do extra key combinations
@@ -35,7 +40,7 @@ map <leader>pp :setlocal paste!<cr>
 map <C-n> :NERDTreeToggle<CR>
 
 " Ctrl+X, Ctrl+C and Ctrl+V
-" Only works after installing vim-gnome package on Ubuntu 10.04 (why?)
+" Only works after installing vim-gnome package on Ubuntu 10.04
 vnoremap <leader>x "+d
 vnoremap <leader>c "+y
 nnoremap <leader>v "+p
@@ -76,13 +81,15 @@ map <C-l> <C-W>l
 map <leader>bd :Bclose<cr>
 
 " Close all the buffers
-map <leader>ba :1,1000 bd!<cr>
+map <leader>ba :1,$bd!<cr>
 
 " Useful mappings for managing tabs
-map <leader>tn :tabnew<cr>
+map <leader>tn :tabn<cr>
+map <leader>tp :tabp<cr>
 map <leader>to :tabonly<cr>
 map <leader>tc :tabclose<cr>
 map <leader>tm :tabmove
+nmap <leader>T :tabnew<cr>
 
 " Opens a new tab with the current buffer's path
 " Super useful when editing files in the same directory
@@ -90,12 +97,6 @@ map <leader>te :tabedit <c-r>=expand("%:p:h")<cr>/
 
 " Switch CWD to the directory of the open buffer
 map <leader>cd :cd %:p:h<cr>:pwd<cr>
-
-map <leader>cc :botright cope<cr>
-map <leader>co ggVGy:tabnew<cr>:set syntax=qf<cr>pgg
-map <leader>n :cn<cr>
-map <leader>p :cp<cr>
-
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Spell checking
@@ -108,7 +109,6 @@ map <leader>sn ]s
 map <leader>sp [s
 map <leader>sa zg
 map <leader>s? z=
-
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Misc
@@ -123,10 +123,6 @@ map <leader>q :e ~/buffer<cr>
 " This allows buffers to be hidden if you've modified a buffer.
 " This is almost a must if you wish to use buffers in this way.
 set hidden
-
-" To open a new empty buffer
-" This replaces :tabnew which I used to bind to this mapping
-nmap <leader>T :enew<cr>
 
 " Move to the next buffer
 nmap <leader>l :bnext<CR>
@@ -158,7 +154,9 @@ autocmd BufWrite *.php :call DeleteTrailingWS()
 
 " client
 autocmd BufWrite *.html :call DeleteTrailingWS()
+autocmd BufWrite *.haml :call DeleteTrailingWS()
 autocmd BufWrite *.js :call DeleteTrailingWS()
+autocmd BufWrite *.jsx :call DeleteTrailingWS()
 autocmd BufWrite *.scss :call DeleteTrailingWS()
 autocmd BufWrite *.styl :call DeleteTrailingWS()
 autocmd BufWrite *.css :call DeleteTrailingWS()
@@ -175,7 +173,8 @@ autocmd BufWrite *.bashrc :call DeleteTrailingWS()
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " Display extra whitespace
-set list listchars=tab:»·,trail:·,nbsp:·
+set listchars=tab:»·,trail:·,nbsp:·
+set list
 
 " Let gitgutter already torned on
 let g:gitgutter_enabled = 1
@@ -203,11 +202,9 @@ set hid
 set backspace=eol,start,indent
 set whichwrap+=<,>,h,l
 
-" Set numbers
+" Set relative numbers and numbers
+set relativenumber
 set number
-
-" When searching try to be smart about cases
-set smartcase
 
 " Ignore case when searching
 set ignorecase
@@ -245,7 +242,7 @@ set cursorline
 syntax enable
 
 " COLORSCHEME
-colorscheme monokai
+colorscheme onedark
 
 " => PLUGINS STUFF FOR VIM "
 " AIRLINE
@@ -255,7 +252,12 @@ let g:airline#extensions#tabline#left_alt_sep = '|'
 " Show just the filename
 let g:airline#extensions#tabline#fnamemod = ':t'
 
-let g:airline_theme = 'simple'
+" INDENT LINE
+let g:indentLine_color_term = 237
+let g:indentLine_enabled = 1
+let g:indentLine_char = '|'
+
+let g:airline_theme = 'onedark'
 
 " CTRLP CONFIGS
 let g:ctrlp_max_height = 100
@@ -314,9 +316,6 @@ set ai "Auto indent
 set si "Smart indent
 set wrap "Wrap lines
 
-
-
-
 " Specify the behavior when switching between buffers
 try
   set switchbuf=useopen,usetab,newtab
@@ -329,9 +328,9 @@ autocmd BufReadPost *
      \ if line("'\"") > 0 && line("'\"") <= line("$") |
      \   exe "normal! g`\"" |
      \ endif
+
 " Remember info about open buffers on close
 set viminfo^=%
-
 
 """"""""""""""""""""""""""""""
 " => Status line
@@ -342,15 +341,24 @@ set laststatus=2
 " Format the status line
 set statusline=\ %{HasPaste()}%F%m%r%h\ %w\ \ CWD:\ %r%{getcwd()}%h\ \ \ Line:\ %l
 
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" MULTIPURPOSE TAB KEY
+" Indent if we're at the beginning of a line. Else, do completion.
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+function! InsertTabWrapper()
+    let col = col('.') - 1
+    if !col || getline('.')[col - 1] !~ '\k'
+        return "\<tab>"
+    else
+        return "\<c-p>"
+    endif
+endfunction
+inoremap <tab> <c-r>=InsertTabWrapper()<cr>
+inoremap <s-tab> <c-n>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Helper functions
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-function! CmdLine(str)
-    exe "menu Foo.Bar :" . a:str
-    emenu Foo.Bar
-    unmenu Foo
-endfunction
 
 function! VisualSelection(direction) range
     let l:saved_reg = @"
@@ -371,15 +379,6 @@ function! VisualSelection(direction) range
 
     let @/ = l:pattern
     let @" = l:saved_reg
-endfunction
-
-
-" Returns true if paste mode is enabled
-function! HasPaste()
-    if &paste
-        return 'PASTE MODE '
-    en
-    return ''
 endfunction
 
 " Don't close window, when deleting a buffer

@@ -14,6 +14,9 @@ shopt -s checkwinsize
 # make less more friendly for non-text input files, see lesspipe(1)
 [ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
 
+# Fuzzy Finder
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash
+
 if [ -n "$force_color_prompt" ]; then
     if [ -x /usr/bin/tput ] && tput setaf 1 >&/dev/null; then
 	# We have color support; assume it's compliant with Ecma-48
@@ -25,42 +28,17 @@ if [ -n "$force_color_prompt" ]; then
     fi
 fi
 
-# enable color support of ls and also add handy aliases
-if [ -x /usr/bin/dircolors ]; then
-    test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
-    alias ls='ls -la --color=auto'
-    alias dir='dir --color=auto'
-    alias vdir='vdir --color=auto'
-    alias vim='vim -T xterm-256color'
-    alias grep='grep --color=auto'
-    alias fgrep='fgrep --color=auto'
-    alias egrep='egrep --color=auto'
-fi
-
-# some more ls aliases
-alias ll='ls -alF'
-alias la='ls -A'
-alias l='ls -CF'
-
-music() { open https://play.google.com/music/listen#/sr/$1$2$3$4$5$6$7$8$9; }
-
+# All alias are concentrated on .bash_aliases
 if [ -f ~/.bash_aliases ]; then
-    . ~/.bash_aliases
-fi
-
-# enable programmable completion features (you don't need to enable
-# this, if it's already enabled in /etc/bash.bashrc and /etc/profile
-# sources /etc/bash.bashrc).
-if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
-    . /etc/bash_completion
+  . ~/.bash_aliases
 fi
 
 function catt() {
-    cat_highlight "$1"
+  cat_highlight "$1"
 }
 
 function lesss() {
-    cat_highlight "$1" | less -R
+  cat_highlight "$1" | less -R
 }
 
 PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
@@ -69,8 +47,6 @@ PATH=$PATH:$HOME/bin # Add bin to PATH
 
 export TERM=xterm-256color
 export CLICOLOR=xterm-color
-export VISUAL=vim
-export EDITOR="$VISUAL"
 
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"  # This loads RVM into a shell session.
 
@@ -188,4 +164,5 @@ else \
     # @2 - Prompt when not in GIT repo
     echo " '$Color_Off'\$ "; \
 fi)'
+
 
