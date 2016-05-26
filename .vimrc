@@ -1,6 +1,19 @@
 "PATHOGEM"
 execute pathogen#infect()
 
+""plug.vim
+
+call plug#begin('~/.vim/plugged')
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" FUZZY FINDER
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+
+call plug#end()
+
+map <C-t> :FZF<CR>
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => General
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -17,11 +30,6 @@ filetype indent on
 set autoread
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" FUZZY FINDER
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-set rtp+=~/.fzf
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " MAPLEADER
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " With a map leader it's possible to do extra key combinations
@@ -35,9 +43,6 @@ nmap <leader>w :w!<cr>
 
 " Toggle paste mode on and off
 map <leader>pp :setlocal paste!<cr>
-
-" Toggle NERDTree
-map <C-n> :NERDTreeToggle<CR>
 
 " Ctrl+X, Ctrl+C and Ctrl+V
 " Only works after installing vim-gnome package on Ubuntu 10.04
@@ -67,9 +72,6 @@ map k gk
 " Map <Space> to / (search) and Ctrl-<Space> to ? (backwards search)
 map <space> /
 map <c-space> ?
-
-" Disable highlight when <leader><cr> is pressed
-map <silent> <leader><cr> :noh<cr>
 
 " Smart way to move between windows
 map <C-j> <C-W>j
@@ -104,20 +106,9 @@ map <leader>cd :cd %:p:h<cr>:pwd<cr>
 " Pressing ,ss will toggle and untoggle spell checking
 map <leader>ss :setlocal spell!<cr>
 
-" Shortcuts using <leader>
-map <leader>sn ]s
-map <leader>sp [s
-map <leader>sa zg
-map <leader>s? z=
-
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Misc
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Remove the Windows ^M - when the encodings gets messed up
-noremap <Leader>m mmHmt:%s/<C-V><cr>//ge<cr>'tzt'm
-
-" Quickly open a buffer for scripbble
-map <leader>q :e ~/buffer<cr>
 
 """"""""""
 " This allows buffers to be hidden if you've modified a buffer.
@@ -261,12 +252,10 @@ let g:airline_theme = 'onedark'
 
 " CTRLP CONFIGS
 let g:ctrlp_max_height = 100
+map <leader>b :CtrlPBuffer<cr>
 
 " => JSHINT
 let JSHintUpdateWriteOnly = 1
-
-" => NERDTree stuff
-autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
 
 " Set extra options when running in GUI mode
 if has("gui_running")
