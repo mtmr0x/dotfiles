@@ -1,22 +1,18 @@
 alias be='bundle exec'
-# enable color support of ls and also add handy aliases
-if [ -x /usr/bin/dircolors ]; then
-    test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
-    alias ls='ls -la --color=auto'
-    alias dir='dir --color=auto'
-    alias vdir='vdir --color=auto'
-    alias vim='/usr/local/bin/vim -T xterm-256color'
-    alias vi='/usr/local/bin/vim -T xterm-256color'
-    alias grep='grep --color=auto'
-    alias fgrep='fgrep --color=auto'
-    alias egrep='egrep --color=auto'
-fi
+alias production_console="heroku run rails console --app worldpackersplatform"
+alias staging_console="heroku run rails console --app staging-worldpackersplatform"
 
-# some more ls aliases
-alias ll='ls -alF'
-alias la='ls -A'
-alias l='ls -CF'
+alias production_migrate="heroku run rake db:migrate --app worldpackersplatform"
+alias staging_migrate="heroku run rake db:migrate --app staging-worldpackersplatform"
 
-alias vim='/usr/local/bin/vim'
-alias vi='/usr/local/bin/vim'
+alias production_reindex="heroku run rake sunspot:soft_reindex --app worldpackersplatform"
+alias staging_reindex="heroku run rake sunspot:soft_reindex --app staging-worldpackersplatform"
+
+alias staging_worker="heroku run:detached rake jobs:work --app staging-worldpackersplatform"
+
+alias staging_log='heroku logs -t --app staging-worldpackersplatform'
+
+eval "$(thefuck --alias)"
+# You can use whatever you want as an alias, like for Mondays:
+eval "$(thefuck --alias fuck)"
 
