@@ -16,6 +16,7 @@ Plug 'Yggdroot/indentLine'
 Plug 'kien/ctrlp.vim'
 Plug 'wavded/vim-stylus'
 Plug 'kchmck/vim-coffee-script'
+Plug 'morhetz/gruvbox'
 
 call plug#end()
 
@@ -240,7 +241,11 @@ set cursorline
 syntax enable
 
 " COLORSCHEME
-colorscheme onedark
+let g:gruvbox_contrast_dark='medium'
+let g:gruvbox_hls_cursor='gray'
+colorscheme gruvbox
+let g:gruvbox_italic=1
+let g:gruvbox_improved_strings=1
 
 " => PLUGINS STUFF FOR VIM "
 " AIRLINE
@@ -255,7 +260,7 @@ let g:indentLine_color_term = 237
 let g:indentLine_enabled = 1
 let g:indentLine_char = '|'
 
-let g:airline_theme = 'onedark'
+" let g:airline_theme = 'onedark'
 
 " CTRLP CONFIGS
 let g:ctrlp_max_height = 100
