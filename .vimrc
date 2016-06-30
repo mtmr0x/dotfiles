@@ -241,7 +241,8 @@ set cursorline
 syntax enable
 
 " COLORSCHEME
-let g:gruvbox_contrast_dark='medium'
+set background=dark
+let g:gruvbox_contrast_dark='dark'
 let g:gruvbox_hls_cursor='gray'
 colorscheme gruvbox
 let g:gruvbox_italic=1
