@@ -12,7 +12,6 @@ Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'vim-airline/vim-airline'
 Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter'
-Plug 'Yggdroot/indentLine'
 Plug 'kien/ctrlp.vim'
 Plug 'wavded/vim-stylus'
 Plug 'kchmck/vim-coffee-script'
