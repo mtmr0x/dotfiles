@@ -12,6 +12,7 @@ Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'vim-airline/vim-airline'
 Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter'
+Plug 'jlanzarotta/bufexplorer'
 Plug 'kien/ctrlp.vim'
 Plug 'wavded/vim-stylus'
 Plug 'kchmck/vim-coffee-script'
@@ -200,8 +201,7 @@ set hid
 set backspace=eol,start,indent
 set whichwrap+=<,>,h,l
 
-" Set relative numbers and numbers
-set relativenumber
+" Set numbers
 set number
 
 " Ignore case when searching
