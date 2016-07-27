@@ -17,6 +17,7 @@ Plug 'kien/ctrlp.vim'
 Plug 'wavded/vim-stylus'
 Plug 'kchmck/vim-coffee-script'
 Plug 'morhetz/gruvbox'
+Plug 'rust-lang/rust.vim'
 
 call plug#end()
 
