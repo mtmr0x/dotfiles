@@ -10,4 +10,12 @@ wget https://raw.githubusercontent.com/git/git/master/contrib/completion/git-com
 wget https://raw.githubusercontent.com/git/git/master/contrib/completion/git-prompt.sh
 mv ~/git-completion.bash ~/.git-completion.bash
 mv ~/git-prompt.sh ~/.git-prompt.sh
+
+# Get updated VIM
+brew install vim
+
+# Install vim-plug
+curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
+    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+
 ```
