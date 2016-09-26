@@ -18,6 +18,9 @@ Plug 'wavded/vim-stylus'
 Plug 'kchmck/vim-coffee-script'
 Plug 'morhetz/gruvbox'
 Plug 'rust-lang/rust.vim'
+Plug 'mxw/vim-jsx'
+Plug 'isRuslan/vim-es6'
+Plug 'scrooloose/syntastic'
 
 call plug#end()
 
@@ -267,8 +270,27 @@ let g:indentLine_char = '|'
 let g:ctrlp_max_height = 100
 map <leader>b :CtrlPBuffer<cr>
 
-" => JSHINT
-let JSHintUpdateWriteOnly = 1
+" => ESLINT FROM SYNTASTIC
+" set statusline+=%#warningmsg#
+" set statusline+=%{SyntasticStatuslineFlag()}
+" set statusline+=%*
+"
+" let g:syntastic_always_populate_loc_list = 0
+" let g:syntastic_loc_list_height = 5
+" let g:syntastic_auto_loc_list = 0
+" let g:syntastic_check_on_open = 0
+" let g:syntastic_check_on_wq = 1
+" let g:syntastic_javascript_checkers = ['eslint']
+"
+" let g:syntastic_error_symbol = '💩'
+" let g:syntastic_style_error_symbol = '⁉️'
+" let g:syntastic_warning_symbol = '⚠️'
+" let g:syntastic_style_warning_symbol = '🙈'
+
+highlight link SyntasticErrorSign SignColumn
+highlight link SyntasticWarningSign SignColumn
+highlight link SyntasticStyleErrorSign SignColumn
+highlight link SyntasticStyleWarningSign SignColumn
 
 " Set extra options when running in GUI mode
 if has("gui_running")
