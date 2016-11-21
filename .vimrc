@@ -1,6 +1,3 @@
-"PATHOGEM"
-execute pathogen#infect()
-
 ""plug.vim
 
 call plug#begin('~/.vim/plugged')
@@ -9,6 +6,7 @@ call plug#begin('~/.vim/plugged')
 " FUZZY FINDER
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/fzf.vim'
 Plug 'vim-airline/vim-airline'
 Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter'
@@ -52,6 +50,7 @@ let g:ctrlp_by_filename = 1
 
 " Fast savingme = 1
 nmap <leader>w :w!<cr>
+nmap <leader>q :q!<cr>
 
 " Toggle paste mode on and off
 map <leader>pp :setlocal paste!<cr>
