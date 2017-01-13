@@ -64,7 +64,7 @@ PathFull="\w"
 export GIT_PS1_SHOWDIRTYSTATE=true
 export GIT_PS1_SHOWUNTRACKEDFILES=true
 
-export PS1=' ➔ ['$Green'\h'$Color_Off'] '$BBlack$PathFull$Color_Off'\
+export PS1=' ['$Green'\h'$Color_Off'] '$BBlack$PathFull$Color_Off'\
 $(git branch &>/dev/null;\
 if [ $? -eq 0 ]; then \
     echo "$(echo `git status` | grep "nothing to commit" > /dev/null 2>&1; \
@@ -78,5 +78,5 @@ if [ $? -eq 0 ]; then \
 else \
     # @2 - Prompt when not in GIT repo
     echo " '$Color_Off' "; \
-fi)\n ➔ '$BBlack'$'$Color_Off' '
+fi)\n'$BBlack' →  $'$Color_Off' '
 
