@@ -38,10 +38,6 @@ fi
 # git lg alias
 git config --global alias.lg "log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative"
 
-
-#  Customize BASH PS1 prompt to show current GIT repository and branch.
-#  by Mike Stewart - http://MediaDoneRight.com
-
 #  SETUP CONSTANTS
 #  Bunch-o-predefined colors.  Makes reading code easier than escape sequences.
 #  I don't remember where I found this.  o_O
@@ -59,24 +55,22 @@ BRed="\[\033[1;31m\]"         # Red
 # High Intensty
 IRed="\[\033[0;91m\]"         # Red
 
-PathFull="\w"
-
 export GIT_PS1_SHOWDIRTYSTATE=true
 export GIT_PS1_SHOWUNTRACKEDFILES=true
 
-export PS1=' ['$Green'\h'$Color_Off'] '$BBlack$PathFull$Color_Off'\
+export PS1=$BRed'→ '$Color_Off$BBlack'\W'$Color_Off'\
 $(git branch &>/dev/null;\
 if [ $? -eq 0 ]; then \
     echo "$(echo `git status` | grep "nothing to commit" > /dev/null 2>&1; \
     if [ "$?" -eq "0" ]; then \
         # @4 - Clean repository - nothing to commit
-        echo "'$Green'"$(__git_ps1 " (%s)"); \
+        echo "'$BBlack'"$(__git_ps1 " (%s)"); \
     else \
         # @5 - Changes to working tree
-        echo "'$IRed'"$(__git_ps1 " {%s}"); \
+        echo "'$BRed'"$(__git_ps1 " {%s}"); \
     fi)'$Color_Off' "; \
 else \
     # @2 - Prompt when not in GIT repo
-    echo " '$Color_Off' "; \
-fi)\n'$BBlack' →  $'$Color_Off' '
+    echo " '$Color_Off'";\
+fi)'$BBlack'$'$Color_Off' '
 
