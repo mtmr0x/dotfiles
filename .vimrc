@@ -15,6 +15,7 @@ Plug 'kien/ctrlp.vim'
 Plug 'wavded/vim-stylus'
 Plug 'kchmck/vim-coffee-script'
 Plug 'morhetz/gruvbox'
+Plug 'sjl/badwolf'
 Plug 'rust-lang/rust.vim'
 Plug 'mxw/vim-jsx'
 Plug 'isRuslan/vim-es6'
@@ -243,13 +244,20 @@ set cursorline
 " Enable syntax highlighting
 syntax enable
 
-" COLORSCHEME
+" COLORSCHEME GRUVBOX
+" set background=dark
+" let g:gruvbox_contrast_dark='dark'
+" let g:gruvbox_hls_cursor='gray'
+" colorscheme gruvbox
+" let g:gruvbox_italic=1
+" let g:gruvbox_improved_strings=1
+
+" COLORSCHEME BADWOLF
 set background=dark
-let g:gruvbox_contrast_dark='dark'
-let g:gruvbox_hls_cursor='gray'
-colorscheme gruvbox
-let g:gruvbox_italic=1
-let g:gruvbox_improved_strings=1
+let g:badwolf_darkgutter = 1
+let g:badwolf_tabline = 0
+let g:badwolf_css_props_highlight = 1
+colorscheme badwolf
 
 " => PLUGINS STUFF FOR VIM "
 " AIRLINE
