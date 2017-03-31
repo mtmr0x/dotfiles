@@ -1,0 +1,9 @@
+[user]
+	name = Matheus Marsiglio
+	email = matmarsiglio@gmail.com
+[core]
+	editor = vim
+[alias]
+	lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
+  count = "!f() { compareBranch=${1-dev}; git rev-list --count HEAD ^$compareBranch; }; f"
+
