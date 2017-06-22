@@ -1,10 +1,7 @@
 #!/bin/sh
 vim_installation() {
   cp .vimrc ~/.vimrc
-  sudo add-apt-repository ppa:jonathonf/vim
-  sudo apt update
-  sudo apt install vim
-  sudo apt install vim-gnome
+  yaourt -S vim
   curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
         https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 
@@ -19,8 +16,8 @@ runBashScripts() {
   cp .bash_profile ~/.bash_profile
   cp .bash_aliases ~/.bash_aliases
   clear
-  echo "Installing GIT"
-  sudo apt install git
+  echo "Installing or updating GIT"
+  yaourt -Syu git
   clear
   echo "\nWhat is your name to be displayed at your GIT user.name?\n\nFor Example, mine is \"Matheus Marsiglio\"\n"
   read git_config_user_name
@@ -40,14 +37,14 @@ runBashScripts() {
   fi
   echo "\n\n\nDone of git globals, let's install some helpers"
   echo "\n\n\nStarting checking if you have wget"
-  sudo apt install wget
+  yaourt -S wget
   wget https://raw.githubusercontent.com/git/git/master/contrib/completion/git-completion.bash
   wget https://raw.githubusercontent.com/git/git/master/contrib/completion/git-prompt.sh
   mv git-completion.bash ~/.git-completion.bash
   mv git-prompt.sh ~/.git-prompt.sh
   clear
   echo "\nIf you type wrongly some command, just type run \"fuck\" for autocorrect\n\n\n"
-  sudo apt-get install thefuck
+  yaourt -S thefuck
   clear
   echo "\nDone with bash and GIT installations.\n\n"
   echo "I have a nice VIM config to install here for you.\n\n"
@@ -69,9 +66,6 @@ greetings() {
   echo "\nHi $USER.\nDo you wanna proceed with the installation? (y/n)"
   read answer
   if echo "$answer" | grep -iq "^y" ;then
-    echo "Updating Aptitude\n\n"
-    sudo apt-get update
-
     runBashScripts
   else
     echo "Ok, anything I'm here and you can also send me a message on Twitter: @matmarsiglio :) \nCheers, \n\nM.\n\n"
