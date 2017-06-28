@@ -8,6 +8,7 @@ call plug#begin('~/.vim/plugged')
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
 Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter'
 Plug 'jlanzarotta/bufexplorer'
@@ -263,38 +264,19 @@ colorscheme badwolf
 " => PLUGINS STUFF FOR VIM "
 " AIRLINE
 let g:airline#extensions#tabline#enabled = 1
-let g:airline#extensions#tabline#left_sep = ' '
-let g:airline#extensions#tabline#left_alt_sep = '|'
-" Show just the filename
-let g:airline#extensions#tabline#fnamemod = ':t'
+let g:airline#extensions#tabline#left_sep = '▶'
+let g:airline#extensions#tabline#right_sep = '◀'
+let g:airline_symbols#maxlinenr = '☰'
+let g:airline_theme = 'minimalist'
 
 " INDENT LINE
 let g:indentLine_color_term = 237
 let g:indentLine_enabled = 1
 let g:indentLine_char = '|'
 
-" let g:airline_theme = 'onedark'
-
 " CTRLP CONFIGS
 let g:ctrlp_max_height = 100
 map <leader>b :CtrlPBuffer<cr>
-
-" => ESLINT FROM SYNTASTIC
-" set statusline+=%#warningmsg#
-" set statusline+=%{SyntasticStatuslineFlag()}
-" set statusline+=%*
-"
-" let g:syntastic_always_populate_loc_list = 0
-" let g:syntastic_loc_list_height = 5
-" let g:syntastic_auto_loc_list = 0
-" let g:syntastic_check_on_open = 0
-" let g:syntastic_check_on_wq = 1
-" let g:syntastic_javascript_checkers = ['eslint']
-"
-" let g:syntastic_error_symbol = '💩'
-" let g:syntastic_style_error_symbol = '⁉️'
-" let g:syntastic_warning_symbol = '⚠️'
-" let g:syntastic_style_warning_symbol = '🙈'
 
 highlight link SyntasticErrorSign SignColumn
 highlight link SyntasticWarningSign SignColumn
