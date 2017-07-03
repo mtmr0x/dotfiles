@@ -13,20 +13,7 @@ HISTCONTROL=ignoredups:ignorespace
 HISTSIZE=10000000
 HISTFILESIZE=20000000
 
-# For Ruby use
-PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
-PATH=$PATH:/opt/vagrant/bin # Add Vagrant to PATH
-PATH=$PATH:$HOME/bin # Add bin to PATH
-[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"  # This loads RVM into a shell session.
-
-# Colors
-export TERM=xterm-256color
-export CLICOLOR=xterm-color
-
-if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
-
 # GIT Configs and helpers
-
 if [ -f ~/.git-completion.bash ]; then
   source ~/.git-completion.bash
 fi
@@ -37,10 +24,6 @@ fi
 
 # git lg alias
 git config --global alias.lg "log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative"
-
-#  SETUP CONSTANTS
-#  Bunch-o-predefined colors.  Makes reading code easier than escape sequences.
-#  I don't remember where I found this.  o_O
 
 # Reset
 Color_Off="\[\033[0m\]"       # Text Reset
@@ -73,4 +56,7 @@ else \
     # @2 - Prompt when not in GIT repo
     echo " '$Color_Off'";\
 fi)'$BBlack'$'$Color_Off' '
+
+
+export PATH="$HOME/.cargo/bin:$PATH"
 
