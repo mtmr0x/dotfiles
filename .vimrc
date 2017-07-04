@@ -17,6 +17,7 @@ Plug 'wavded/vim-stylus'
 Plug 'kchmck/vim-coffee-script'
 Plug 'morhetz/gruvbox'
 Plug 'sjl/badwolf'
+Plug 'dracula/vim'
 Plug 'rust-lang/rust.vim'
 Plug 'mxw/vim-jsx'
 Plug 'isRuslan/vim-es6'
@@ -255,11 +256,10 @@ syntax enable
 " let g:gruvbox_improved_strings=1
 
 " COLORSCHEME BADWOLF
-set background=dark
 let g:badwolf_darkgutter = 1
 let g:badwolf_tabline = 0
 let g:badwolf_css_props_highlight = 1
-colorscheme badwolf
+colorscheme dracula
 
 " => PLUGINS STUFF FOR VIM "
 " AIRLINE
@@ -267,7 +267,7 @@ let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#left_sep = '▶'
 let g:airline#extensions#tabline#right_sep = '◀'
 let g:airline_symbols#maxlinenr = '☰'
-let g:airline_theme = 'minimalist'
+let g:airline_theme = 'dracula'
 
 " INDENT LINE
 let g:indentLine_color_term = 237
