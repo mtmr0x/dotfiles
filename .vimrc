@@ -11,17 +11,15 @@ Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter'
-Plug 'jlanzarotta/bufexplorer'
 Plug 'kien/ctrlp.vim'
+Plug 'terryma/vim-multiple-cursors'
 Plug 'wavded/vim-stylus'
-Plug 'kchmck/vim-coffee-script'
-Plug 'morhetz/gruvbox'
-Plug 'sjl/badwolf'
 Plug 'dracula/vim'
+Plug 'tomasr/molokai'
 Plug 'rust-lang/rust.vim'
 Plug 'mxw/vim-jsx'
+Plug 'pangloss/vim-javascript'
 Plug 'isRuslan/vim-es6'
-Plug 'scrooloose/syntastic'
 
 call plug#end()
 
@@ -247,19 +245,8 @@ set cursorline
 " Enable syntax highlighting
 syntax enable
 
-" COLORSCHEME GRUVBOX
-" set background=dark
-" let g:gruvbox_contrast_dark='dark'
-" let g:gruvbox_hls_cursor='gray'
-" colorscheme gruvbox
-" let g:gruvbox_italic=1
-" let g:gruvbox_improved_strings=1
-
-" COLORSCHEME BADWOLF
-let g:badwolf_darkgutter = 1
-let g:badwolf_tabline = 0
-let g:badwolf_css_props_highlight = 1
-colorscheme dracula
+let g:rehash256 = 1
+colorscheme molokai
 
 " => PLUGINS STUFF FOR VIM "
 " AIRLINE
@@ -267,7 +254,7 @@ let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#left_sep = '▶'
 let g:airline#extensions#tabline#right_sep = '◀'
 let g:airline_symbols#maxlinenr = '☰'
-let g:airline_theme = 'dracula'
+let g:airline_theme = 'dark'
 
 " INDENT LINE
 let g:indentLine_color_term = 237
@@ -277,6 +264,13 @@ let g:indentLine_char = '|'
 " CTRLP CONFIGS
 let g:ctrlp_max_height = 100
 map <leader>b :CtrlPBuffer<cr>
+
+" vim-javascript configuration
+let g:javascript_plugin_jsdoc = 1
+let g:javascript_plugin_ngdoc = 1
+let g:javascript_plugin_flow = 1
+set conceallevel=1
+map <leader>l :exec &conceallevel ? "set conceallevel=0" : "set conceallevel=1"<CRG
 
 highlight link SyntasticErrorSign SignColumn
 highlight link SyntasticWarningSign SignColumn
