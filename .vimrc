@@ -207,7 +207,6 @@ set whichwrap+=<,>,h,l
 
 " Set numbers
 set number
-set relativenumber
 map <leader>rn :set relativenumber!<cr>
 
 " Ignore case when searching
