@@ -38,6 +38,8 @@ BRed="\[\033[1;31m\]"         # Red
 # High Intensty
 IRed="\[\033[0;91m\]"         # Red
 
+export EDITOR='nvim'
+
 export GIT_PS1_SHOWDIRTYSTATE=true
 export GIT_PS1_SHOWUNTRACKEDFILES=true
 
@@ -56,7 +58,6 @@ else \
     # @2 - Prompt when not in GIT repo
     echo " '$Color_Off'";\
 fi)'$BBlack'$'$Color_Off' '
-
 
 export PATH="$HOME/.cargo/bin:$PATH"
 

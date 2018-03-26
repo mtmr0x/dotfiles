@@ -2,11 +2,22 @@
 vim_installation() {
   cp .vimrc ~/.vimrc
   brew install vim
+  echo "\nGetting latest python for supporting operations in Neovim"
+  brew upgrade python
+  echo "\nInstalling Neovim"
+  brew install neovim
+  echo "\nCreating Neovim folder configs"
+  mkdir ~/.config
+  mkdir ~/.config/nvim
+  cp ./neovim/init.vim ~/.config/nvim/init.vim
   curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
         https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 
+  echo "\nWe need to perform the VIM dependencies installation. The screen will open and some errors will show up. Just ignore it following the instructions and the installations will run properly."
+  echo "\n\nPress ENTER to continue to the installation"
+  read press_anything
   clear
-  vim -c "PlugInstall" -c "q" -c "q"
+  nvim -c "PlugInstall" -c "q" -c "q"
 }
 
 runBashScripts() {
