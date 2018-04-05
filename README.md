@@ -19,7 +19,7 @@ All VIM plugins are supported by most Linux Operational Systems and MacOS.
 Enter in the dotfiles folder and type:
 
 ```
-$ sh installation/linux.sh
+$ sh installation/archlinux.sh
 ```
 
 ### Mac installation
