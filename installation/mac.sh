@@ -45,7 +45,7 @@ runBashScripts() {
   echo "Can I do that for you? (y/n)\n\n"
   read git_core_editor_to_vim
   if echo "$git_core_editor_to_vim" | grep -iq "^y" ;then
-    git config --global core.editor vim
+    git config --global core.editor nvim
   else
     echo "\nOk, it's on your hands. :) Let's move on"
   fi
