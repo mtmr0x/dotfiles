@@ -132,11 +132,12 @@ set hid
 set backspace=eol,start,indent
 set whichwrap+=<,>,h,l
 
+set ignorecase
+set smartcase
+
 " Set numbers
 set number
 map <leader>rn :set relativenumber!<cr>
-
-set smartcase
 
 " Highlight search results
 set hlsearch
