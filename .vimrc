@@ -15,6 +15,7 @@ Plug 'tomasr/molokai'
 Plug 'rust-lang/rust.vim'
 Plug 'mxw/vim-jsx'
 Plug 'pangloss/vim-javascript'
+Plug 'leafgarland/typescript-vim'
 Plug 'isRuslan/vim-es6'
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'carlitux/deoplete-ternjs', { 'do': 'npm install -g tern' }
@@ -333,6 +334,7 @@ autocmd BufWrite *.php :call DeleteTrailingWS()
 autocmd BufWrite *.html :call DeleteTrailingWS()
 autocmd BufWrite *.haml :call DeleteTrailingWS()
 autocmd BufWrite *.js :call DeleteTrailingWS()
+autocmd BufWrite *.ts :call DeleteTrailingWS()
 autocmd BufWrite *.jsx :call DeleteTrailingWS()
 autocmd BufWrite *.scss :call DeleteTrailingWS()
 autocmd BufWrite *.styl :call DeleteTrailingWS()
