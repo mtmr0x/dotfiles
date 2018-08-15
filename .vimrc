@@ -137,6 +137,7 @@ set smartcase
 
 " Set numbers
 set number
+set relativenumber
 map <leader>rn :set relativenumber!<cr>
 
 " Highlight search results
