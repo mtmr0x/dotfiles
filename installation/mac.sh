@@ -49,6 +49,9 @@ runBashScripts() {
   else
     echo "\nOk, it's on your hands. :) Let's move on"
   fi
+  echo "Defining gitignore global in root folder"
+  cp .gitignore_global ~/.gitignore_global
+  git config --global core.excludesfile ~/.gitignore_global
   echo "\n\n\nDone of git globals, let's install some helpers"
   echo "\n\n\nStarting checking if you have wget"
   brew install wget
