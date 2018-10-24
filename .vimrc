@@ -7,6 +7,7 @@ Plug 'w0rp/ale'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'itchyny/lightline.vim'
+Plug 'vim-airline/vim-airline'
 Plug 'tpope/vim-fugitive'
 Plug 'mhinz/vim-signify'
 Plug 'terryma/vim-multiple-cursors'
@@ -14,9 +15,10 @@ Plug 'wavded/vim-stylus'
 Plug 'tomasr/molokai'
 Plug 'rust-lang/rust.vim'
 Plug 'mxw/vim-jsx'
-Plug 'pangloss/vim-javascript'
 Plug 'leafgarland/typescript-vim'
+Plug 'pangloss/vim-javascript'
 Plug 'isRuslan/vim-es6'
+Plug 'flowtype/vim-flow'
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'carlitux/deoplete-ternjs', { 'do': 'npm install -g tern' }
 Plug 'alexlafroscia/deoplete-flow'
@@ -44,8 +46,9 @@ let g:signify_sign_change            = '~'
 let g:signify_sign_changedelete      = g:signify_sign_change
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" LIGHTLINE
+" AIRLINE
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:airline#extensions#tabline#enabled = 1
 set laststatus=2
 set noshowmode
 
@@ -56,6 +59,12 @@ let g:ale_completion_enabled = 1
 let g:ale_sign_column_always = 1
 let g:ale_sign_error = '>>'
 let g:ale_sign_warning = '!!'
+let g:ale_linters = {
+\'javascript': ['flow', 'eslint'],
+\}
+let g:ale_fixers = {
+\'javascript': ['eslint'],
+\}
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " DEOPLETE
@@ -64,13 +73,27 @@ let g:deoplete#enable_at_startup = 1
 let g:deoplete#sources#ternjs#types = 1
 let g:deoplete#sources#ternjs#depths = 1
 let g:deoplete#sources#ternjs#include_keywords = 1
+let g:deoplete#sources#ternjs#sort = 0
 "Add extra filetypes
 let g:deoplete#sources#ternjs#filetypes = [
                 \ 'jsx',
                 \ 'javascript.jsx',
                 \ 'vue',
-                \ '...'
+                \ 'js',
+                \ 'ts',
+                \ '...',
                 \ ]
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" TYPESCRIPT-VIM
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:typescript_compiler_binary = 'tsc'
+let g:typescript_compiler_options = '--lib es6'
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" VIM-FLOW
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:flow#enable = 1
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " VIM-JAVASCRIPT
