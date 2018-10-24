@@ -30,6 +30,7 @@ runBashScripts() {
   echo "Installing Homebrew"
   /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
   clear
+
   echo "Installing or updating GIT"
   brew install git
   clear
@@ -61,8 +62,72 @@ runBashScripts() {
   mv git-prompt.sh ~/.git-prompt.sh
   clear
   echo "\nDone with bash and GIT installations.\n\n"
-  echo "I have a nice VIM config to install here for you.\n\n"
-  echo "Wanna install it? (y/n)"
+
+  echo "\nInstalling Node environment through NVM"
+  curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.11/install.sh | bash
+  export NVM_DIR="${XDG_CONFIG_HOME/:-$HOME/.}nvm"
+  [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
+  command -v nvm
+  echo "Installing Node"
+  nvm install 9.5
+
+  echo "\nInstalling zsh"
+  brew install zsh
+  echo "\nzsh installed!"
+  echo "\nSetting zsh as default interface"
+  grep -q -f $(which zsh) /etc/shells || echo $(which zsh) | sudo tee -a /etc/shells
+  chsh -s $(which zsh)
+  echo  "\nDone! zsh is the default terminal"
+  clear
+
+  echo "Installing powerline fonts"
+  echo "\nCloning powerline fonts repository"
+  cd ~/
+  git clone https://github.com/powerline/fonts.git --depth=1
+  cd ~/fonts
+  echo "\nExecuting powerline fonts installation script"
+  ./install.sh
+  echo "\nDone! Now removing powerline fonts folder because we don't need it anymore"
+  cd ../ && rm -rf fonts
+  echo "Installing spaceship-prompt"
+  npm install -g spaceship-prompt
+
+  echo "\nFor NVM works properly at zsh, you need to put this into your $HOME/.zshrc to call nvm use automatically whenever you enter a directory that contains an .nvmrc file with a string telling nvm which node to use:"
+  echo "
+    # place this after nvm initialization!
+    autoload -U add-zsh-hook
+    load-nvmrc() {
+      local node_version="$(nvm version)"
+      local nvmrc_path="$(nvm_find_nvmrc)"
+
+      if [ -n "$nvmrc_path" ]; then
+        local nvmrc_node_version=$(nvm version "$(cat "${nvmrc_path}")")
+
+        if [ "$nvmrc_node_version" = "N/A" ]; then
+          nvm install
+        elif [ "$nvmrc_node_version" != "$node_version" ]; then
+          nvm use
+        fi
+      elif [ "$node_version" != "$(nvm version default)" ]; then
+        echo "Reverting to nvm default version"
+        nvm use default
+      fi
+    }
+    add-zsh-hook chpwd load-nvmrc
+    load-nvmrc
+  "
+  echo  "\n\n More information here: https://github.com/creationix/nvm#deeper-shell-integration"
+  echo "\n\n\nHave you finished this step? (y/n)"
+  read nvm_shell_integration_warn
+  if echo "$nvm_shell_integration_warn" | grep -iq "^y" ;then
+    echo "Shall we!"
+  else
+    clear
+    echo "Ok then ¯\_(ツ)_/¯"
+  fi
+
+  echo "\nI have a nice VIM config to install here for you.\n\n"
+  echo "\nWanna install it? (y/n)"
   read wanna_install_vim
   if echo "$wanna_install_vim" | grep -iq "^y" ;then
     vim_installation
