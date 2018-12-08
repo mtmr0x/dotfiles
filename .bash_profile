@@ -59,5 +59,6 @@ else \
     echo " '$Color_Off'";\
 fi)'$BBlack'$'$Color_Off' '
 
-export PATH="$HOME/.cargo/bin:$PATH"
+# For brew
+export PATH="/usr/local/bin:$PATH"
 
