@@ -4,6 +4,7 @@ vim_installation() {
   brew install vim
   echo "\nGetting latest python for supporting operations in Neovim"
   brew upgrade python
+  brew install python3
   echo "\nInstalling Neovim"
   brew install neovim
   echo "\nCreating Neovim folder configs"
@@ -70,6 +71,24 @@ runBashScripts() {
     clear
     echo "Ok then ¯\_(ツ)_/¯"
   fi
+  clear
+  echo "\nInstalling NodeJS from NVM\n\n"
+  curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.34.0/install.sh | bash
+  export NVM_DIR="${XDG_CONFIG_HOME/:-$HOME/.}nvm"
+  [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
+  command -v nvm
+  nvm install 10.16
+  clear
+  echo "\nInstalling Rust\n\n"
+  curl https://sh.rustup.rs -sSf | sh
+  clear
+  echo "\nInstalling additional tools\n\n"
+  echo  "\nInstalling tree\n\n"
+  brew install tree
+  echo "\nInstalling GTI\n\n"
+  brew install gti
+  echo "\nInstalling Fuck\n\n"
+  brew install thefuck
   echo "\n\n\n\n\n"
   echo "Everything's done! \n\n Make sure to mark \"Run command as a login shell\" option in your Terminal preferences to bash be interpreted."
 echo "\n\nDon't forget to restart your terminal after the installations"
