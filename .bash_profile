@@ -43,13 +43,13 @@ export EDITOR='nvim'
 export GIT_PS1_SHOWDIRTYSTATE=true
 export GIT_PS1_SHOWUNTRACKEDFILES=true
 
-export PS1=$BRed'→ '$Color_Off$BBlack'\W'$Color_Off'\
+export PS1=$BRed'→ '$Color_Off'\W''\
 $(git branch &>/dev/null;\
 if [ $? -eq 0 ]; then \
     echo "$(echo `git status` | grep "nothing to commit" > /dev/null 2>&1; \
     if [ "$?" -eq "0" ]; then \
         # @4 - Clean repository - nothing to commit
-        echo "'$BBlack'"$(__git_ps1 " (%s)"); \
+        echo "'$Green'"$(__git_ps1 " (%s)"); \
     else \
         # @5 - Changes to working tree
         echo "'$BRed'"$(__git_ps1 " {%s}"); \
@@ -62,3 +62,5 @@ fi)'$BBlack'$'$Color_Off' '
 # For brew
 export PATH="/usr/local/bin:$PATH"
 
+
+export PATH="$HOME/.cargo/bin:$PATH"
