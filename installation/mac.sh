@@ -5,6 +5,7 @@ vim_installation() {
   echo "\nGetting latest python for supporting operations in Neovim"
   brew upgrade python
   brew install python3
+  pip3 install neovim --user
   echo "\nInstalling Neovim"
   brew install neovim
   echo "\nCreating Neovim folder configs"
