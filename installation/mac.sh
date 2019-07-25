@@ -22,6 +22,34 @@ vim_installation() {
   nvim -c "PlugInstall" -c "q" -c "q"
 }
 
+side_tools() {
+  echo "\nInstalling GUI tools from brew cask"
+  echo "\n\n\n"
+  echo "\nInstalling Fantastical Calendar"
+  brew cask install fantastical
+  echo "\n\n\n"
+  echo "\nInstalling Brave Browser"
+  brew cask install brave-browser
+  echo "\n\n\n"
+  echo "\nInstalling XMind-ZEN"
+  brew cask install xmind-zen
+  echo "\n\n\n"
+  echo "\nInstalling 1Password"
+  brew cask install 1password
+  echo "\n\n\n"
+  echo "\nInstalling 1Password CLI"
+  brew cask install 1password-cli
+  echo "\n\n\n"
+  echo "\nInstalling GPG Tools"
+  brew cask install gpg-suite
+  echo "\n\n\n"
+  echo "\nInstalling Sketch App"
+  brew cask install sketch
+  echo "\n\n\n"
+  echo "Side tools installed! 🎉"
+  echo "\n\n\n"
+}
+
 runBashScripts() {
   clear
   echo "\nMoving scripts to your user directory..."
@@ -90,6 +118,14 @@ runBashScripts() {
   brew install gti
   echo "\nInstalling Fuck\n\n"
   brew install thefuck
+  echo "\n\n\n\n\n"
+  read wanna_install_side_tools
+  if echo "$wanna_install_side_tools" | grep -iq "^y" ;then
+    side_tools
+  else
+    clear
+    echo "Ok then ¯\_(ツ)_/¯"
+  fi
   echo "\n\n\n\n\n"
   echo "Everything's done! \n\n Make sure to mark \"Run command as a login shell\" option in your Terminal preferences to bash be interpreted."
 echo "\n\nDon't forget to restart your terminal after the installations"
