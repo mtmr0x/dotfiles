@@ -13,6 +13,9 @@ HISTCONTROL=ignoredups:ignorespace
 HISTSIZE=10000000
 HISTFILESIZE=20000000
 
+# Thefuck
+eval "$(thefuck --alias)"
+
 # GIT Configs and helpers
 if [ -f ~/.git-completion.bash ]; then
   source ~/.git-completion.bash
