@@ -50,6 +50,17 @@ side_tools() {
   echo "\n\n\n"
 }
 
+mac_defaults() {
+  clear
+  echo "Configuring Dock\n"
+  defaults write com.apple.dock static-only -bool true; killall Dock
+  defaults write com.apple.Dock autohide -bool true; killall Dock
+  echo "\n\n"
+  echo "Configuring keyboard\n"
+  defaults write -g InitialKeyRepeat -int 15
+  defaults write -g KeyRepeat -int 2
+}
+
 runBashScripts() {
   clear
   echo "\nMoving scripts to your user directory..."
@@ -118,10 +129,23 @@ runBashScripts() {
   brew install gti
   echo "\nInstalling Fuck\n\n"
   brew install thefuck
-  echo "\n\n\n\n\n"
+  clear
+  echo "\n\n"
+  echo "Do you want to install the default GUI tools like XMind, Brave Browser, Fantastical, etc? (y/n)\n"
   read wanna_install_side_tools
   if echo "$wanna_install_side_tools" | grep -iq "^y" ;then
     side_tools
+  else
+    clear
+    echo "Ok then ¯\_(ツ)_/¯"
+  fi
+  clear
+  echo "\n\n"
+  echo "Do you want to run MacOS configurations scripts for customizations? (y/n)\n"
+  echo "\n\n\n\n\n"
+  read mac_defaults
+  if echo "$mac_defaults" | grep -iq "^y" ;then
+    mac_defaults
   else
     clear
     echo "Ok then ¯\_(ツ)_/¯"
