@@ -179,6 +179,9 @@ set mat=2
 " Highlight the current cursor line
 set cursorline
 
+" set a default split to the right considering right to left reading
+set splitright
+
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " MAPLEADER
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -191,6 +194,8 @@ let g:ctrlp_by_filename = 1
 " Fast savingme = 1
 nmap <leader>w :w!<cr>
 nmap <leader>q :q!<cr>
+
+map <leader>l :vsplit<cr>:Ggrep "<C-r><C-w>"<cr><Esc>:copen<cr>
 
 " Toggle paste mode on and off
 map <leader>pp :setlocal paste!<cr>
