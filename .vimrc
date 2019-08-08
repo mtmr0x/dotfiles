@@ -3,6 +3,7 @@
 call plug#begin('~/.vim/plugged')
 
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'w0rp/ale'
 Plug 'junegunn/fzf.vim'
 Plug 'itchyny/lightline.vim'
 Plug 'vim-airline/vim-airline'
@@ -195,7 +196,6 @@ let g:ctrlp_by_filename = 1
 nmap <leader>w :w!<cr>
 nmap <leader>q :q!<cr>
 
-" search for word in cursor and split and open :copen to show results
 map <leader>l :vsplit<cr>:Ggrep "<C-r><C-w>"<cr><Esc>:copen<cr>
 
 " Toggle paste mode on and off
