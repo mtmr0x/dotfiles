@@ -360,7 +360,7 @@ endfunc
 " server
 autocmd BufWrite *.py :call DeleteTrailingWS()
 autocmd BufWrite *.rb :call DeleteTrailingWS()
-autocmd BufWrite *.php :call DeleteTrailingWS()
+autocmd BufWrite *.rs :call DeleteTrailingWS()
 
 " client
 autocmd BufWrite *.html :call DeleteTrailingWS()
