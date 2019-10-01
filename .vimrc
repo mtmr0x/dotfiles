@@ -21,6 +21,7 @@ Plug 'flowtype/vim-flow'
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'carlitux/deoplete-ternjs', { 'do': 'npm install -g tern' }
 Plug 'alexlafroscia/deoplete-flow'
+Plug 'deoplete-plugins/deoplete-go', { 'do': 'make'}
 Plug 'gcmt/taboo.vim'
 Plug 'fatih/vim-go'
 
