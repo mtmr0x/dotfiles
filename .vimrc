@@ -22,6 +22,7 @@ Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'carlitux/deoplete-ternjs', { 'do': 'npm install -g tern' }
 Plug 'alexlafroscia/deoplete-flow'
 Plug 'deoplete-plugins/deoplete-go', { 'do': 'make'}
+Plug 'sebastianmarkow/deoplete-rust'
 Plug 'gcmt/taboo.vim'
 Plug 'fatih/vim-go'
 
@@ -130,6 +131,10 @@ filetype indent on
 
 " Set to auto read when a file is changed from the outside
 set autoread
+
+" Update file when cursor stops moving and when you focus on Terminal
+au CursorHold,CursorHoldI * checktime
+au FocusGained,BufEnter * :checktime
 
 " Display extra whitespace
 set listchars=tab:»·,trail:·,nbsp:·
