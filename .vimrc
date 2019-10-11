@@ -22,6 +22,7 @@ Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'carlitux/deoplete-ternjs', { 'do': 'npm install -g tern' }
 Plug 'alexlafroscia/deoplete-flow'
 Plug 'deoplete-plugins/deoplete-go', { 'do': 'make'}
+Plug 'stamblerre/gocode', { 'rtp': 'nvim', 'do': '~/.config/nvim/plugged/gocode/nvim/symlink.sh' }
 Plug 'sebastianmarkow/deoplete-rust'
 Plug 'gcmt/taboo.vim'
 Plug 'fatih/vim-go'
@@ -72,11 +73,15 @@ let g:ale_fixers = {
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " DEOPLETE
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+set completeopt+=noinsert
+set completeopt+=noselect
 let g:deoplete#enable_at_startup = 1
+let g:deoplete#complete_method = "omnifunc"
+" TERNJS
 let g:deoplete#sources#ternjs#types = 1
 let g:deoplete#sources#ternjs#depths = 1
 let g:deoplete#sources#ternjs#include_keywords = 1
-let g:deoplete#sources#ternjs#sort = 0
+let g:deoplete#sources#ternjs#sort = 1
 "Add extra filetypes
 let g:deoplete#sources#ternjs#filetypes = [
                 \ 'jsx',
@@ -86,6 +91,11 @@ let g:deoplete#sources#ternjs#filetypes = [
                 \ 'ts',
                 \ '...',
                 \ ]
+
+" Go lang
+let g:deoplete#sources#go#builtin_objects=1
+let g:deoplete#sources#go#gocode_binary = $GOPATH.'/bin/gocode'
+let g:deoplete#sources#go#sort_class = ['package', 'func', 'type', 'var', 'const']
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " TYPESCRIPT-VIM

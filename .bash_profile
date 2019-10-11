@@ -67,3 +67,4 @@ export PATH="/usr/local/bin:$PATH"
 
 
 export PATH="$HOME/.cargo/bin:$PATH"
+export GOPATH=$(go env GOPATH)
