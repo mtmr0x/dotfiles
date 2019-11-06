@@ -61,19 +61,28 @@ mac_defaults() {
   defaults write -g KeyRepeat -int 2
 }
 
-runBashScripts() {
+runScripts() {
   clear
+  echo "\nInstalling Oh-My-Zsh\n"
+  sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+
   echo "\nMoving scripts to your user directory..."
-  cp .bashrc ~/.bashrc
-  cp .bash_profile ~/.bash_profile
-  cp .bash_aliases ~/.bash_aliases
-  clear
+  cp .zshrc ~/.zshrc
+
   echo "Installing Homebrew"
   /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
   clear
+
   echo "Installing or updating GIT"
   brew install git
   clear
+
+  echo "Installing spaceship-prompt"
+  git clone https://github.com/denysdovhan/spaceship-prompt.git "$ZSH_CUSTOM/themes/spaceship-prompt"
+  echo "\n\nCreating Symlink to spaceship-prompt"
+  ln -s "$ZSH_CUSTOM/themes/spaceship-prompt/spaceship.zsh-theme" "$ZSH_CUSTOM/themes/spaceship.zsh-theme"
+  clear
+
   echo "\nWhat is your name to be displayed at your GIT user.name?\n\nFor Example, mine is \"Matheus Marsiglio\"\n"
   read git_config_user_name
   git config --global user.name "$git_config_user_name"
@@ -94,14 +103,9 @@ runBashScripts() {
   cp .gitignore_global ~/.gitignore_global
   git config --global core.excludesfile ~/.gitignore_global
   echo "\n\n\nDone of git globals, let's install some helpers"
-  echo "\n\n\nStarting checking if you have wget"
+  echo "\n\n\nInstalling wget\n\n"
   brew install wget
-  wget https://raw.githubusercontent.com/git/git/master/contrib/completion/git-completion.bash
-  wget https://raw.githubusercontent.com/git/git/master/contrib/completion/git-prompt.sh
-  mv git-completion.bash ~/.git-completion.bash
-  mv git-prompt.sh ~/.git-prompt.sh
   clear
-  echo "\nDone with bash and GIT installations.\n\n"
   echo "I have a nice VIM config to install here for you.\n\n"
   echo "Wanna install it? (y/n)"
   read wanna_install_vim
@@ -113,7 +117,7 @@ runBashScripts() {
   fi
   clear
   echo "\nInstalling NodeJS from NVM\n\n"
-  curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.34.0/install.sh | bash
+  curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.1/install.sh | bash
   export NVM_DIR="${XDG_CONFIG_HOME/:-$HOME/.}nvm"
   [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
   command -v nvm
@@ -160,7 +164,7 @@ greetings() {
   echo "\nHi $USER.\nDo you wanna proceed with the installation? (y/n)"
   read answer
   if echo "$answer" | grep -iq "^y" ;then
-    runBashScripts
+    runScripts
   else
     echo "Ok, anything I'm here and you can also send me a message on Twitter: @matmarsiglio :) \nCheers, \n\nM.\n\n"
   fi
