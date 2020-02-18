@@ -63,12 +63,6 @@ mac_defaults() {
 
 runScripts() {
   clear
-  echo "\nInstalling Oh-My-Zsh\n"
-  sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
-
-  echo "\nMoving scripts to your user directory..."
-  cp .zshrc ~/.zshrc
-
   echo "Installing Homebrew"
   /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
   clear
@@ -76,6 +70,16 @@ runScripts() {
   echo "Installing or updating GIT"
   brew install git
   clear
+
+  echo "\nInstalling Oh-My-Zsh\n"
+  sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+
+  echo "\nMoving scripts to your user directory..."
+  cp .zshrc ~/.zshrc
+
+  echo "\nInstalling syntax highlight and autocompletion plugins for zsh"
+  git clone https://github.com/zsh-users/zsh-autosuggestions.git $ZSH_CUSTOM/plugins/zsh-autosuggestions
+  git clone https://github.com/zsh-users/zsh-syntax-highlighting.git $ZSH_CUSTOM/plugins/zsh-syntax-highlighting
 
   echo "Installing spaceship-prompt"
   git clone https://github.com/denysdovhan/spaceship-prompt.git "$ZSH_CUSTOM/themes/spaceship-prompt"
