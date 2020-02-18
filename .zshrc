@@ -73,6 +73,8 @@ CASE_SENSITIVE="true"
 plugins=(
   git
   osx
+  zsh-autosuggestions
+  zsh-syntax-highlighting
 )
 
 source $ZSH/oh-my-zsh.sh
@@ -116,6 +118,7 @@ alias cargo-home='source $HOME/.cargo/env'
 
 # git lg alias
 git config --global alias.lg "log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative"
+git config --global alias.foda-se "push --force"
 
 export GOPATH=$(go env GOPATH)
 export GOBIN="$GOPATH/bin"
