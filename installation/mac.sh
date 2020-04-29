@@ -8,6 +8,8 @@ vim_installation() {
   pip3 install neovim --user
   echo "\nInstalling Neovim"
   brew install neovim
+  echo "\nInstalling The Silver Searcher\n"
+  brew install the_silver_searcher
   echo "\nCreating Neovim folder configs"
   mkdir ~/.config
   mkdir ~/.config/nvim
@@ -76,6 +78,12 @@ runScripts() {
 
   echo "\nMoving scripts to your user directory..."
   cp .zshrc ~/.zshrc
+
+  echo "\nInstalling zsh-autosuggestions\n"
+  git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
+
+  echo "\nInstlaling zsh-syntax-highlighting\n"
+  brew install zsh-syntax-highlighting
 
   echo "\nInstalling syntax highlight and autocompletion plugins for zsh"
   git clone https://github.com/zsh-users/zsh-autosuggestions.git $ZSH_CUSTOM/plugins/zsh-autosuggestions

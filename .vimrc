@@ -2,9 +2,10 @@
 
 call plug#begin('~/.vim/plugged')
 
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
-Plug 'w0rp/ale'
+"Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
+Plug 'w0rp/ale'
 Plug 'itchyny/lightline.vim'
 Plug 'vim-airline/vim-airline'
 Plug 'tpope/vim-fugitive'
@@ -26,14 +27,24 @@ Plug 'stamblerre/gocode', { 'rtp': 'nvim', 'do': '~/.config/nvim/plugged/gocode/
 Plug 'sebastianmarkow/deoplete-rust'
 Plug 'gcmt/taboo.vim'
 Plug 'fatih/vim-go'
+Plug 'editorconfig/editorconfig-vim'
 
 call plug#end()
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " FZF
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-map <C-p> :FZF<CR>
+map <C-p> :GFiles<CR>
+let g:fzf_preview_window = 'right:60%'
 
+map <leader>g :Ag <cr>
+command! -bang -nargs=* Ag call fzf#vim#ag(<q-args>, fzf#vim#with_preview('right'), <bang>0)
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" EDITORCONFIG
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:EditorConfig_exclude_patterns = ['fugitive://.*']
+let g:EditorConfig_disable_rules = ['trim_trailing_whitespace']
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " NERDTREE
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
