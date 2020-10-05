@@ -24,34 +24,6 @@ vim_installation() {
   nvim -c "PlugInstall" -c "q" -c "q"
 }
 
-side_tools() {
-  echo "\nInstalling GUI tools from brew cask"
-  echo "\n\n\n"
-  echo "\nInstalling Fantastical Calendar"
-  brew cask install fantastical
-  echo "\n\n\n"
-  echo "\nInstalling Brave Browser"
-  brew cask install brave-browser
-  echo "\n\n\n"
-  echo "\nInstalling XMind-ZEN"
-  brew cask install xmind-zen
-  echo "\n\n\n"
-  echo "\nInstalling 1Password"
-  brew cask install 1password
-  echo "\n\n\n"
-  echo "\nInstalling 1Password CLI"
-  brew cask install 1password-cli
-  echo "\n\n\n"
-  echo "\nInstalling GPG Tools"
-  brew cask install gpg-suite
-  echo "\n\n\n"
-  echo "\nInstalling Sketch App"
-  brew cask install sketch
-  echo "\n\n\n"
-  echo "Side tools installed! 🎉"
-  echo "\n\n\n"
-}
-
 mac_defaults() {
   clear
   echo "Configuring Dock\n"
@@ -65,19 +37,9 @@ mac_defaults() {
 
 runScripts() {
   clear
-  echo "Installing Homebrew"
-  /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
-  clear
-
   echo "Installing or updating GIT"
   brew install git
   clear
-
-  echo "\nInstalling Oh-My-Zsh\n"
-  sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
-
-  echo "\nMoving scripts to your user directory..."
-  cp .zshrc ~/.zshrc
 
   echo "\nInstalling zsh-autosuggestions\n"
   git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
@@ -88,12 +50,6 @@ runScripts() {
   echo "\nInstalling syntax highlight and autocompletion plugins for zsh"
   git clone https://github.com/zsh-users/zsh-autosuggestions.git $ZSH_CUSTOM/plugins/zsh-autosuggestions
   git clone https://github.com/zsh-users/zsh-syntax-highlighting.git $ZSH_CUSTOM/plugins/zsh-syntax-highlighting
-
-  echo "Installing spaceship-prompt"
-  git clone https://github.com/denysdovhan/spaceship-prompt.git "$ZSH_CUSTOM/themes/spaceship-prompt"
-  echo "\n\nCreating Symlink to spaceship-prompt"
-  ln -s "$ZSH_CUSTOM/themes/spaceship-prompt/spaceship.zsh-theme" "$ZSH_CUSTOM/themes/spaceship.zsh-theme"
-  clear
 
   echo "\nWhat is your name to be displayed at your GIT user.name?\n\nFor Example, mine is \"Matheus Marsiglio\"\n"
   read git_config_user_name
@@ -118,23 +74,6 @@ runScripts() {
   echo "\n\n\nInstalling wget\n\n"
   brew install wget
   clear
-  echo "I have a nice VIM config to install here for you.\n\n"
-  echo "Wanna install it? (y/n)"
-  read wanna_install_vim
-  if echo "$wanna_install_vim" | grep -iq "^y" ;then
-    vim_installation
-  else
-    clear
-    echo "Ok then ¯\_(ツ)_/¯"
-  fi
-  clear
-  echo "\nInstalling NodeJS from NVM\n\n"
-  curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.1/install.sh | bash
-  export NVM_DIR="${XDG_CONFIG_HOME/:-$HOME/.}nvm"
-  [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
-  command -v nvm
-  nvm install 10.16
-  clear
   echo "\nInstalling Rust\n\n"
   curl https://sh.rustup.rs -sSf | sh
   clear
@@ -143,30 +82,10 @@ runScripts() {
   brew install tree
   echo "\nInstalling GTI\n\n"
   brew install gti
-  echo "\nInstalling Fuck\n\n"
-  brew install thefuck
   clear
   echo "\n\n"
-  echo "Do you want to install the default GUI tools like XMind, Brave Browser, Fantastical, etc? (y/n)\n"
-  read wanna_install_side_tools
-  if echo "$wanna_install_side_tools" | grep -iq "^y" ;then
-    side_tools
-  else
-    clear
-    echo "Ok then ¯\_(ツ)_/¯"
-  fi
-  clear
-  echo "\n\n"
-  echo "Do you want to run MacOS configurations scripts for customizations? (y/n)\n"
-  echo "\n\n\n\n\n"
-  read mac_defaults
-  if echo "$mac_defaults" | grep -iq "^y" ;then
-    mac_defaults
-  else
-    clear
-    echo "Ok then ¯\_(ツ)_/¯"
-  fi
-  echo "\n\n\n\n\n"
+  echo "I have a nice VIM config to install here for you.\n\n"
+  vim_installation
   echo "Everything's done! \n\n Make sure to mark \"Run command as a login shell\" option in your Terminal preferences to bash be interpreted."
 echo "\n\nDon't forget to restart your terminal after the installations"
 }

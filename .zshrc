@@ -105,10 +105,6 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
-  # Set Spaceship ZSH as a prompt
-  autoload -U promptinit; promptinit
-  prompt spaceship
-
 # Aliases
 
 alias vi="nvim"
@@ -119,9 +115,6 @@ alias cargo-home='source $HOME/.cargo/env'
 # git lg alias
 git config --global alias.lg "log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative"
 git config --global alias.foda-se "push --force"
-
-export GOPATH=$(go env GOPATH)
-export GOBIN="$GOPATH/bin"
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
