@@ -5,8 +5,18 @@ call plug#begin('~/.vim/plugged')
 "Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'w0rp/ale'
-Plug 'itchyny/lightline.vim'
+Plug 'RRethy/vim-illuminate'
+Plug 'sheerun/vim-polyglot'
+Plug 'AndrewRadev/tagalong.vim'
+Plug 'brooth/far.vim'
+Plug 'liuchengxu/vista.vim'
+Plug 'voldikss/vim-floaterm'
+
+Plug 'powerline/powerline'
+Plug 'ryanoasis/powerline-extra-symbols'
+
 Plug 'vim-airline/vim-airline'
 Plug 'tpope/vim-fugitive'
 Plug 'mhinz/vim-signify'
@@ -15,14 +25,11 @@ Plug 'wavded/vim-stylus'
 Plug 'tomasr/molokai'
 Plug 'rust-lang/rust.vim'
 Plug 'mxw/vim-jsx'
+Plug 'peitalin/vim-jsx-typescript'
 Plug 'leafgarland/typescript-vim'
 Plug 'pangloss/vim-javascript'
 Plug 'isRuslan/vim-es6'
 Plug 'flowtype/vim-flow'
-Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-Plug 'carlitux/deoplete-ternjs', { 'do': 'npm install -g tern' }
-Plug 'alexlafroscia/deoplete-flow'
-Plug 'deoplete-plugins/deoplete-go', { 'do': 'make'}
 Plug 'stamblerre/gocode', { 'rtp': 'nvim', 'do': '~/.config/nvim/plugged/gocode/nvim/symlink.sh' }
 Plug 'sebastianmarkow/deoplete-rust'
 Plug 'gcmt/taboo.vim'
@@ -30,6 +37,32 @@ Plug 'fatih/vim-go'
 Plug 'editorconfig/editorconfig-vim'
 
 call plug#end()
+
+"" VISTA
+
+let g:vista_default_executive = 'coc'
+
+let g:vista#renderer#enable_icon = 0
+
+"" TAGALONG -> auto complete html tags closing
+let g:tagalong_filetypes = ['html', 'xml', 'tsx', 'jsx', 'eruby', 'ejs', 'eco', 'php', 'htmldjango', 'javascriptreact', 'typescriptreact', 'javascript']
+let g:tagalong_verbose = 1
+
+"""""""""""
+"" FLOATERM
+"""""""""""
+let g:floaterm_keymap_toggle = '<F1>'
+let g:floaterm_keymap_next   = '<F2>'
+let g:floaterm_keymap_prev   = '<F3>'
+let g:floaterm_keymap_new    = '<F4>'
+
+" Floaterm
+let g:floaterm_gitcommit='floaterm'
+let g:floaterm_autoinsert=1
+let g:floaterm_width=0.8
+let g:floaterm_height=0.8
+let g:floaterm_wintitle=0
+let g:floaterm_autoclose=1
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " FZF
@@ -394,6 +427,7 @@ autocmd BufWrite *.haml :call DeleteTrailingWS()
 autocmd BufWrite *.js :call DeleteTrailingWS()
 autocmd BufWrite *.ts :call DeleteTrailingWS()
 autocmd BufWrite *.jsx :call DeleteTrailingWS()
+autocmd BufWrite *.tsx :call DeleteTrailingWS()
 autocmd BufWrite *.scss :call DeleteTrailingWS()
 autocmd BufWrite *.styl :call DeleteTrailingWS()
 autocmd BufWrite *.css :call DeleteTrailingWS()
