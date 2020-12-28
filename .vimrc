@@ -2,37 +2,21 @@
 
 call plug#begin('~/.vim/plugged')
 
-"Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'w0rp/ale'
-Plug 'RRethy/vim-illuminate'
-Plug 'sheerun/vim-polyglot'
-Plug 'AndrewRadev/tagalong.vim'
-Plug 'brooth/far.vim'
-Plug 'liuchengxu/vista.vim'
+Plug 'AndrewRadev/tagalong.vim' " helper for html tags
+Plug 'brooth/far.vim' " find and replace tool
+Plug 'liuchengxu/vista.vim' " show under the cursor item definition
 Plug 'voldikss/vim-floaterm'
-
-Plug 'powerline/powerline'
-Plug 'ryanoasis/powerline-extra-symbols'
-
 Plug 'vim-airline/vim-airline'
 Plug 'tpope/vim-fugitive'
-Plug 'mhinz/vim-signify'
+Plug 'mhinz/vim-signify' " show vcs diffs at line
 Plug 'terryma/vim-multiple-cursors'
-Plug 'wavded/vim-stylus'
-Plug 'tomasr/molokai'
+Plug 'ayu-theme/ayu-vim'
 Plug 'rust-lang/rust.vim'
-Plug 'mxw/vim-jsx'
-Plug 'peitalin/vim-jsx-typescript'
-Plug 'leafgarland/typescript-vim'
-Plug 'pangloss/vim-javascript'
-Plug 'isRuslan/vim-es6'
-Plug 'flowtype/vim-flow'
 Plug 'stamblerre/gocode', { 'rtp': 'nvim', 'do': '~/.config/nvim/plugged/gocode/nvim/symlink.sh' }
-Plug 'sebastianmarkow/deoplete-rust'
-Plug 'gcmt/taboo.vim'
 Plug 'fatih/vim-go'
 Plug 'editorconfig/editorconfig-vim'
 
@@ -56,7 +40,6 @@ let g:floaterm_keymap_next   = '<F2>'
 let g:floaterm_keymap_prev   = '<F3>'
 let g:floaterm_keymap_new    = '<F4>'
 
-" Floaterm
 let g:floaterm_gitcommit='floaterm'
 let g:floaterm_autoinsert=1
 let g:floaterm_width=0.8
@@ -78,11 +61,6 @@ command! -bang -nargs=* Ag call fzf#vim#ag(<q-args>, fzf#vim#with_preview('right
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:EditorConfig_exclude_patterns = ['fugitive://.*']
 let g:EditorConfig_disable_rules = ['trim_trailing_whitespace']
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" NERDTREE
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-map <C-t> :NERDTreeToggle<CR>
-let NERDTreeShowHidden=1
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " SIGNIFY
@@ -114,62 +92,10 @@ let g:ale_fixers = {
 \'javascript': ['eslint'],
 \}
 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" DEOPLETE
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-set completeopt+=noinsert
-set completeopt+=noselect
-let g:deoplete#enable_at_startup = 1
-let g:deoplete#complete_method = "omnifunc"
-" TERNJS
-let g:deoplete#sources#ternjs#types = 1
-let g:deoplete#sources#ternjs#depths = 1
-let g:deoplete#sources#ternjs#include_keywords = 1
-let g:deoplete#sources#ternjs#sort = 1
-"Add extra filetypes
-let g:deoplete#sources#ternjs#filetypes = [
-                \ 'jsx',
-                \ 'javascript.jsx',
-                \ 'vue',
-                \ 'js',
-                \ 'ts',
-                \ '...',
-                \ ]
-
 " Go lang
 let g:deoplete#sources#go#builtin_objects=1
 let g:deoplete#sources#go#gocode_binary = $GOPATH.'/bin/gocode'
 let g:deoplete#sources#go#sort_class = ['package', 'func', 'type', 'var', 'const']
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" TYPESCRIPT-VIM
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let g:typescript_compiler_binary = 'tsc'
-let g:typescript_compiler_options = '--lib es6'
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" VIM-FLOW
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let g:flow#enable = 1
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" VIM-JAVASCRIPT
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let g:javascript_plugin_jsdoc = 1
-let g:javascript_plugin_ngdoc = 1
-let g:javascript_plugin_flow = 1
-
-" Binary path to your flow, defaults to your $PATH flow
-let g:deoplete#sources#flow#flow_bin = 'flow'
-function! StrTrim(txt)
-  return substitute(a:txt, '^\n*\s*\(.\{-}\)\n*\s*$', '\1', '')
-endfunction
-
-let g:flow_path = StrTrim(system('PATH=$(npm bin):$PATH && which flow'))
-
-if g:flow_path != 'flow not found'
-  let g:deoplete#sources#flow#flow_bin = g:flow_path
-endif
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " GENERAL
@@ -305,7 +231,9 @@ map <C-l> <C-W>l
 syntax enable
 
 let g:rehash256 = 1
-colorscheme molokai
+set termguicolors     " enable true colors support
+let ayucolor="dark"
+colorscheme ayu
 
 " Set utf8 as standard encoding and en_US as the standard language
 set encoding=utf8
@@ -333,6 +261,9 @@ set tabstop=2
 " Linebreak on 500 characters
 set lbr
 set tw=500
+
+" Maximum length in line of 100
+set colorcolumn=100
 
 " Identations
 vnoremap << <gv
