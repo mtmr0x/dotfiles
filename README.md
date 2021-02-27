@@ -1,49 +1,47 @@
 # My not so simple dotfiles
 
-## Prerequesites
+## Overview
 
- - [Homebrew](https://brew.sh)
- - [Oh my Zsh](https://ohmyz.sh/#install)
- - [A powerline font](https://github.com/powerline/fonts) - You may set one of them as your terminal font for symbols and characters compatibility
+These dotfiles are dependant of the following steps. After following the next steps, you will get a
+terminal client with zsh on Oh-My-Zsh framework and Spaceship theme and a powerful NVIM configuration.
 
-## Zsh
+## Prerequisites
 
-It's pretty much Oh My Zsh with Spaceship plus steroids. Easy to configure but powerfull tooling.
+**Clone this repository**
 
-## Spaceship prompt
-
-I personally like [Spaceship prompt](https://github.com/denysdovhan/spaceship-prompt). If you want a swag theme, go to their GitHub repository and follow instructions for installation.
-
-> Do not forget to install sobe [Powerline fonts](https://github.com/powerline/fonts) for using Spaceship.
-
-## VIM
-
-I use Neovim with vim-plug for managing plugins and with some custom configs for myself.
-
-All VIM plugins are supported by most Linux distributions and MacOS.
-
-## Installation
+```sh
+git clone git@github.com:mtmr0x/dotfiles.git
+```
 
 **Access this dotfiles folder:**
 
 ```sh
-cd path-to-here/dotfiles
+cd dotfiles/
 ```
 
-**Move the `.zshrc` file to your user folder:**
+**Move .zshrc file to your root**
 
 ```sh
 cp .zshrc ~/.zshrc
 ```
 
+**Install these external dependencies**
+
+ - [Homebrew](https://brew.sh)
+ - [Oh my Zsh](https://ohmyz.sh/#install)
+ - [A powerline font](https://github.com/powerline/fonts) - You must set one of them as your terminal font for symbols and characters compatibility
+
+## Installation
+
 **Restart your terminal session**
 
-It will break and show you a poor interface on the new window. Do not worry, it's just missing some tools we are going to install in the next step.
+> **IMPORTANT**: It might show you a broken interface at the new window. Do not worry, it's just missing some tools we are going to install in the next step.
 
 **Run the installation script**
 
 ```
-$ sh installation/install.sh
+$ ./installation/install.sh
 ```
 
 **Restart your terminal session and you're done 🎉**
+
