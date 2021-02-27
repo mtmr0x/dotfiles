@@ -1,7 +1,6 @@
 #!/bin/sh
 vim_installation() {
   cp .vimrc ~/.vimrc
-  brew install vim
   echo "\nGetting latest python for supporting operations in Neovim"
   brew upgrade python
   brew install python3
@@ -10,6 +9,12 @@ vim_installation() {
   brew install neovim
   echo "\nInstalling The Silver Searcher\n"
   brew install the_silver_searcher
+  echo "\nInstalling FZF"
+  brew install fzf
+  echo "\nInstalling Node"
+  brew install node
+  echo "\nInstalling Yarn"
+  brew install yarn
   echo "\nCreating Neovim folder configs"
   mkdir ~/.config
   mkdir ~/.config/nvim
@@ -24,21 +29,7 @@ vim_installation() {
   nvim -c "PlugInstall" -c "q" -c "q"
 }
 
-mac_defaults() {
-  clear
-  echo "Configuring Dock\n"
-  defaults write com.apple.dock static-only -bool true; killall Dock
-  defaults write com.apple.Dock autohide -bool true; killall Dock
-  echo "\n\n"
-  echo "Configuring keyboard\n"
-  defaults write -g InitialKeyRepeat -int 15
-  defaults write -g KeyRepeat -int 2
-}
-
 runScripts() {
-  clear
-  echo "Installing or updating GIT"
-  brew install git
   clear
 
   echo "\nInstalling zsh-autosuggestions\n"
@@ -73,9 +64,6 @@ runScripts() {
   echo "\n\n\nDone of git globals, let's install some helpers"
   echo "\n\n\nInstalling wget\n\n"
   brew install wget
-  clear
-  echo "\nInstalling Rust\n\n"
-  curl https://sh.rustup.rs -sSf | sh
   clear
   echo "\nInstalling additional tools\n\n"
   echo  "\nInstalling tree\n\n"
