@@ -50,6 +50,8 @@ source ~/vim_modules/indentation.vim
 source ~/vim_modules/buffers.vim
 source ~/vim_modules/filetype.vim
 source ~/vim_modules/cursor.vim
+source ~/vim_modules/navigation.vim
+source ~/vim_modules/search.vim
 
 """""""""""""
 " MODIFIERS "
