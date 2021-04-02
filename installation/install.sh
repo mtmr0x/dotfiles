@@ -1,6 +1,7 @@
 #!/bin/sh
 vim_installation() {
   cp .vimrc ~/.vimrc
+  cp -r ./vim_modules ~/
   echo "\nGetting latest python for supporting operations in Neovim"
   brew upgrade python
   brew install python3
