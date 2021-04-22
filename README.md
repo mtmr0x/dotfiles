@@ -30,6 +30,7 @@ cp .zshrc ~/.zshrc
  - [Homebrew](https://brew.sh)
  - [Oh my Zsh](https://ohmyz.sh/#install)
  - [A powerline font](https://github.com/powerline/fonts) - You must set one of them as your terminal font for symbols and characters compatibility
+ - [The silver searcher](https://github.com/ggreer/the_silver_searcher) - In order to give super powers to the nvim
 
 ## Installation
 
@@ -44,4 +45,26 @@ $ ./installation/install.sh
 ```
 
 **Restart your terminal session and you're done 🎉**
+
+## Post-install
+
+Do not forget to get `coc` plugins to the ambient from inside NeoVim:
+
+```
+:CocInstall coc-tsserver
+```
+
+```
+:CocInstall coc-prettier
+```
+
+```
+:CocInstall coc-json
+```
+
+```
+:CocInstall coc-rust-analyzer
+```
+
+...and anything else you want. Check them here: https://github.com/neoclide/coc.nvim/wiki/Using-coc-extensions
 
