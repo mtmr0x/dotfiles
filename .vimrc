@@ -8,9 +8,18 @@ Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'jlesquembre/coc-conjure' " extension for clojure
+Plug 'Olical/conjure', {'tag': 'v4.18.0'}
+Plug 'tpope/vim-dispatch'
+Plug 'clojure-vim/vim-jack-in'
+Plug 'tpope/vim-fireplace'
+" Infer parentheses for Clojure, Lisp and Scheme.
+Plug 'eraserhd/parinfer-rust', {'do':
+        \  'cargo build --release'}
+" Only in Neovim:
+Plug 'radenling/vim-dispatch-neovim'
 Plug 'leafgarland/typescript-vim'
 Plug 'peitalin/vim-jsx-typescript'
-Plug 'w0rp/ale' " linter
+" Plug 'w0rp/ale' " linter
 Plug 'AndrewRadev/tagalong.vim' " helper for html tags
 Plug 'brooth/far.vim' " find and replace tool
 Plug 'liuchengxu/vista.vim' " show under the cursor item definition
