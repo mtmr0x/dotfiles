@@ -126,3 +126,6 @@ if command -v pyenv 1>/dev/null 2>&1; then
   eval "$(pyenv init -)"
 fi
 
+# opam configuration
+test -r /Users/mtmr0x/.opam/opam-init/init.zsh && . /Users/mtmr0x/.opam/opam-init/init.zsh > /dev/null 2> /dev/null || true
+JAVA_HOME=/Library/Java/JavaVirtualMachines/adoptopenjdk-11.jdk/Contents/Home
