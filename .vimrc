@@ -17,6 +17,7 @@ Plug 'eraserhd/parinfer-rust', {'do':
         \  'cargo build --release'}
 " Only in Neovim:
 Plug 'radenling/vim-dispatch-neovim'
+Plug 'guns/vim-clojure-static'
 Plug 'leafgarland/typescript-vim'
 Plug 'peitalin/vim-jsx-typescript'
 " Plug 'w0rp/ale' " linter
@@ -48,6 +49,7 @@ source ~/vim_modules/dependencies/airline.vim
 source ~/vim_modules/dependencies/signify.vim
 source ~/vim_modules/dependencies/gocode.vim
 source ~/vim_modules/dependencies/editorconfig.vim
+source ~/vim_modules/dependencies/vim-clojure-static.vim
 
 """"""""""""""""""
 " CONFIGURATIONS "

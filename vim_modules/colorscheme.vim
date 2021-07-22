@@ -3,7 +3,8 @@
 """""""""""""""
 
 " Enable syntax highlighting
-syntax enable
+syntax on
+filetype plugin indent on
 
 let g:rehash256 = 1
 set termguicolors     " enable true colors support
