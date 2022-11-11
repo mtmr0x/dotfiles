@@ -7,15 +7,17 @@ call plug#begin('~/.vim/plugged')
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
-Plug 'tpope/vim-dispatch'
+
+" Clojure Setup
 Plug 'clojure-vim/vim-jack-in'
-Plug 'tpope/vim-fireplace'
-" Infer parentheses for Clojure, Lisp and Scheme.
-Plug 'eraserhd/parinfer-rust', {'do':
-        \  'cargo build --release'}
-" Only in Neovim:
 Plug 'radenling/vim-dispatch-neovim'
-Plug 'guns/vim-clojure-static'
+Plug 'SevereOverfl0w/vim-replant', { 'do': ':UpdateRemotePlugins' }
+Plug 'tpope/vim-dispatch'
+Plug 'tpope/vim-fireplace'
+
+Plug 'luochen1990/rainbow'
+
+" Only in Neovim:
 Plug 'leafgarland/typescript-vim'
 Plug 'peitalin/vim-jsx-typescript'
 " Plug 'w0rp/ale' " linter
@@ -26,7 +28,10 @@ Plug 'voldikss/vim-floaterm'
 Plug 'vim-airline/vim-airline'
 Plug 'tpope/vim-fugitive'
 Plug 'mhinz/vim-signify' " show vcs diffs at line
+" Colourschemes
 Plug 'ayu-theme/ayu-vim'
+Plug 'dracula/vim', { 'as': 'dracula' }
+" End Colourschemes
 Plug 'rust-lang/rust.vim'
 Plug 'stamblerre/gocode', { 'rtp': 'nvim', 'do': '~/.config/nvim/plugged/gocode/nvim/symlink.sh' }
 Plug 'fatih/vim-go'
