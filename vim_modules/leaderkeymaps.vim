@@ -31,3 +31,10 @@ nmap <leader>T :tabnew<cr>
 " Pressing ,ss will toggle and untoggle spell checking
 map <leader>ss :setlocal spell!<cr>
 
+" Embrace selection with parenthesis
+xnoremap <leader>) xi()<Esc>P
+" Embrace selection with square brackets
+xnoremap <leader>] xi[]<Esc>P
+" Embrace selection with curly brackets
+xnoremap <leader>} xi{}<Esc>P
+
