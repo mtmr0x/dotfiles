@@ -14,6 +14,7 @@ Plug 'radenling/vim-dispatch-neovim'
 Plug 'SevereOverfl0w/vim-replant', { 'do': ':UpdateRemotePlugins' }
 Plug 'tpope/vim-dispatch'
 Plug 'tpope/vim-fireplace'
+Plug 'guns/vim-sexp'
 
 Plug 'luochen1990/rainbow'
 
