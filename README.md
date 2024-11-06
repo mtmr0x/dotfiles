@@ -1,4 +1,17 @@
-# My not so simple dotfiles
+![hero](screenshot-nvim-setup.png)
+
+<h1 align="center"><b>(Not so simple) neovim & dotfiles setup</b></h1>
+
+<p align="center">
+    Clojure, Go, TypeScript|JavaScript (Deno & Node), Rust, Lua
+    <br />
+    <br />
+    <a target="_blank" href="https://mat-m.com">Check my website</a>
+    ·
+    <a target="_blank" href="https://github.com/mtmr0x/dotfiles/blob/main/neovim/init.lua">See the init.lua neovim</a>
+  </p>
+</p>
+
 
 ## Overview
 
