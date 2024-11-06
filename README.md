@@ -32,14 +32,11 @@ cp .zshrc ~/.zshrc
  - [A powerline font](https://github.com/powerline/fonts) - You must set one of them as your terminal font for symbols and characters compatibility
  - [The silver searcher](https://github.com/ggreer/the_silver_searcher) - In order to give super powers to the nvim
 
-## VIM Set-up
+## Neovim setup
+
+**Install Neovim and its dependencies**
 
 ```sh
-# move files to your root
-cp .vimrc ~/.vimrc
-cp -r ./vim_modules ~/
-
-# Getting latest python for supporting operations in Neovim
 brew upgrade python
 brew install python3
 pip3 install neovim --user
@@ -59,40 +56,37 @@ brew install node
 # Install Yarn
 brew install yarn
 
+```
+
+Install Lazy for dependency management in neovim: [https://www.lazyvim.org/](https://www.lazyvim.org/)
+
+Paste the neovim init file to your root:
+
+```sh
 # Create Neovim folder configs and paste the content inside
 mkdir ~/.config
 mkdir ~/.config/nvim
-cp ./neovim/init.vim ~/.config/nvim/init.vim
-
-# Install Plug
-curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
-      https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-
-# Install Plug dependencies
-nvim -c "PlugInstall" -c "q" -c "q"
+# move files to your root
+cp neovim/init.vim ~/.config/nvim/init.vim
 ```
+
+Access the init.vim file and make sure to update API Keys
 
 **Restart your terminal session and you're done 🎉**
 
-## Post-install
+## iTerm2 themes:
 
-Do not forget to get `coc` plugins to the ambient from inside NeoVim:
+Inside the `iterm-themes` folder has catppuccin themes for iTerm2. You can import them by going to iTerm2 > Preferences > Profiles > Colors > Color Presets > Import and selecting the theme you want.
 
-```
-:CocInstall coc-tsserver
-```
+## License
 
-```
-:CocInstall coc-prettier
-```
+MIT License
 
-```
-:CocInstall coc-json
-```
+Copyright 2024 - Matheus Marsiglio
 
-```
-:CocInstall coc-rust-analyzer
-```
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the “Software”), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
 
-...and anything else you want. Check them here: https://github.com/neoclide/coc.nvim/wiki/Using-coc-extensions
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED “AS IS”, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
