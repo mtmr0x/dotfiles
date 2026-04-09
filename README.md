@@ -1,5 +1,3 @@
-![hero](screenshot-nvim-setup.png)
-
 <h1 align="center"><b>(Not so simple) neovim & dotfiles setup</b></h1>
 
 <p align="center">
