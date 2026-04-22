@@ -192,24 +192,17 @@ require("lazy").setup({
     -- languages
     {
       "davidmh/mdx.nvim",
-      config = true,
       dependencies = {"nvim-treesitter/nvim-treesitter"}
     },
     {
       "Olical/conjure",
-      ft = { "clojure", "fennel", "python" }, -- etc
-      lazy = true,
+      lazy = false,
       init = function()
         -- Set configuration options here
         -- Uncomment this to get verbose logging to help diagnose internal Conjure issues
         -- This is VERY helpful when reporting an issue with the project
         -- vim.g["conjure#debug"] = true
       end,
-
-      requires = {
-        'guns/vim-sexp',
-        'tpope/vim-sexp-mappings-for-regular-people'
-      },
 
       -- Optional cmp-conjure integration
       dependencies = {
@@ -380,32 +373,40 @@ cmp.setup.cmdline(':', {
   })
 })
 
--- Set up lspconfig.
+-- Set up LSP servers.
 local capabilities = require('cmp_nvim_lsp').default_capabilities()
-local nvim_lsp = require('lspconfig')
 
-require('lspconfig').clojure_lsp.setup {
-  on_attach = on_attach,
-  root_dir = nvim_lsp.util.root_pattern("project.clj", "shadow-cljs.edn", "deps.edn"),
+vim.lsp.config('clojure_lsp', {
+  cmd = { 'clojure-lsp' },
+  filetypes = { 'clojure' },
+  root_markers = { 'project.clj', 'shadow-cljs.edn', 'deps.edn' },
   capabilities = capabilities,
-}
+})
+vim.lsp.enable('clojure_lsp')
 
-require('lspconfig').clangd.setup {
+vim.lsp.config('clangd', {
+  cmd = { 'clangd' },
+  filetypes = { 'c', 'cpp', 'objc', 'objcpp', 'cuda', 'proto' },
   capabilities = capabilities,
-}
+})
+vim.lsp.enable('clangd')
 
-nvim_lsp.denols.setup {
-  on_attach = on_attach,
-  root_dir = nvim_lsp.util.root_pattern("deno.json", "deno.jsonc"),
-  capatibilities = capabilities,
-}
+vim.lsp.config('denols', {
+  cmd = { 'deno', 'lsp' },
+  filetypes = { 'javascript', 'javascriptreact', 'javascript.jsx', 'typescript', 'typescriptreact', 'typescript.tsx' },
+  root_markers = { 'deno.json', 'deno.jsonc' },
+  capabilities = capabilities,
+})
+vim.lsp.enable('denols')
 
-nvim_lsp.ts_ls.setup {
-  on_attach = on_attach,
-  root_dir = nvim_lsp.util.root_pattern("package.json"),
+vim.lsp.config('ts_ls', {
+  cmd = { 'typescript-language-server', '--stdio' },
+  filetypes = { 'javascript', 'javascriptreact', 'javascript.jsx', 'typescript', 'typescriptreact', 'typescript.tsx' },
+  root_markers = { 'package.json' },
   single_file_support = false,
-  capatibilities = capabilities,
-}
+  capabilities = capabilities,
+})
+vim.lsp.enable('ts_ls')
 
 require("catppuccin").setup({
   flavour = "latte", -- latte, frappe, macchiato, mocha
